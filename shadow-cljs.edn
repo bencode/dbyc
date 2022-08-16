@@ -1,14 +1,15 @@
 ;; shadow-cljs configuration
 {:source-paths
- ["src/dev"
-  "src/main"
-  "src/test"]
+ ["src" "test"]
 
  :dependencies
- []
+ [[lilactown/helix "0.1.7"]
+  [binaryage/devtools "0.9.7"]]
 
- :dev-http {8080 "public"}
  :builds
- {:frontend
+ {:app
   {:target :browser
-   :modules {:main {:init-fn bcd.app/init}}}}}
+   :modules {:main {:init-fn dbyc.app/init}}
+   :devtools {:http-root "public"
+              :http-port 8080
+              :preloads [devtools.preload]}}}}
